@@ -1,24 +1,25 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
- 
+
+import { AuthService } from '../../services/auth/auth.service';
+  
 @Component({
   selector: 'sign-in',
   templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.scss']
+  styleUrls: ['./sign-in.component.scss'],
+  providers: [AuthService]
 })
 
 export class SignInComponent implements OnInit {
   profileForm: FormGroup;
+  type: string = 'password'
   show: boolean = false;
-  messageText: string;
 
   constructor(
-    private fb: FormBuilder, 
-    private http: HttpClient,
-    private router: Router
-    ) { }
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit() {
     this.profileForm = this.fb.group({
@@ -27,24 +28,20 @@ export class SignInComponent implements OnInit {
     })
   }
   
-  showPassword(input) {
-    input.type = input.type === 'password' ? 'text' : 'password';
+  togglePassword() {
+    this.type = this.type === 'password' ? 'text' : 'password';
     this.show = this.show = !this.show;
   }
 
-  @Input() notification;
-
   submit() {
-    this.messageText = 'dsdsd'
-    return this.http.post('http://localhost:3000', this.profileForm.value).subscribe(
-      response => {
+    return this.authService.signIn(this.profileForm.value).subscribe(
+      (response) => {
         console.log(response)
+        this.router.navigate(['/home']);
       },
-      error => {
+
+      (error) => {
         console.log(error)
-        if(error.status == 200) {
-          this.router.navigate(['/home'])
-        }
       }
     )
   }

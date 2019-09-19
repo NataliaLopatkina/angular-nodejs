@@ -38,15 +38,31 @@
                             <div class="form__item">
                                 <label class="form__label" for="password">Password</label>
                                 <div class="form__password">
-                                    <input class="form__input" type="password" id="password" placeholder="12345678"
-                                        minlength="5" formControlName="password" required #input>
-                                    <button class="form__password-button" [class.active]="show === true" button="type" (click)="showPassword(input)">
+                                    <input class="form__input" [type]=typeFieldPassword id="password" placeholder="12345678"
+                                        minlength="5" formControlName="password" required>
+                                    <button class="form__password-button" [class.active]="showPassword === true" button="type" (click)="togglePassword()">
                                         <img class="form__password-img" src="../../assets/images/eye.svg" alt="Show password">
                                     </button>
                                     <div *ngIf="profileForm.controls['password'].errors && !profileForm.controls['password'].pristine">
                                         <span class="error" *ngIf="profileForm.controls['password'].errors.required">Password is required!</span>
                                         <span class="error" *ngIf="profileForm.controls['password'].errors.minlength">Minimum password length 5
                                             characters</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form__item">
+                                <label class="form__label" for="password">Confirm password</label>
+                                <div class="form__password">
+                                    <input class="form__input" [type]=typeFieldConfirmPassword id="password" placeholder="12345678" minlength="5"
+                                        formControlName="confirmPassword" required>
+                                    <button class="form__password-button" [class.active]="showConfirmPassword === true" button="type" (click)="toggleConfirmPassword()">
+                                        <img class="form__password-img" src="../../assets/images/eye.svg" alt="Show password">
+                                    </button>
+                                    <div *ngIf="profileForm.controls['confirmPassword'].errors && !profileForm.controls['confirmPassword'].pristine">
+                                        <span class="error" *ngIf="profileForm.controls['confirmPassword'].errors.required">Password is required!</span>
+                                        <span class="error" *ngIf="profileForm.controls['confirmPassword'].errors.minlength">Minimum password length 5
+                                            characters</span>
+                                        <span class="error" *ngIf="profileForm.controls['confirmPassword'].errors.mustMatch">Password must match!</span>
                                     </div>
                                 </div>
                             </div>

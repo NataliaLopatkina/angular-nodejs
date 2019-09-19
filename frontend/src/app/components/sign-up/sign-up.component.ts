@@ -1,48 +1,60 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+
+import { AuthService } from '../../services/auth/auth.service';
+
+import { ConfirmPassword } from '../../helpers/confirm-password/confirm-password.validator';
 
 @Component({
   selector: 'sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss'],
+  providers: [AuthService],
 })
 
 export class SignUpComponent implements OnInit {
   profileForm: FormGroup;
-  error: any;
-  show = false;
-  response: any;
+  typeFieldPassword: string = 'password';
+  typeFieldConfirmPassword = 'password';
+  showPassword: boolean = false;
+  showConfirmPassword: boolean = false;
 
   constructor(
     private fb: FormBuilder,
-    private http: HttpClient,
+    private authService: AuthService,
     private router: Router) { }
 
   ngOnInit() {
     this.profileForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]],
-      password: ['', [Validators.required, Validators.minLength(5)]]
+      password: ['', [Validators.required, Validators.minLength(5)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(5)]]
+    }, {
+        validator: ConfirmPassword('password', 'confirmPassword')
     })
   }
 
-  showPassword(input) {
-    input.type = input.type === 'password' ? 'text' : 'password';
-    this.show = this.show = !this.show;
+  togglePassword() {
+    this.typeFieldPassword = this.typeFieldPassword === 'password' ? 'text' : 'password';
+    this.showPassword = this.showPassword = !this.showPassword;
+  }
+
+  toggleConfirmPassword() {
+    this.typeFieldConfirmPassword = this.typeFieldConfirmPassword === 'password' ? 'text' : 'password';
+    this.showConfirmPassword = this.showConfirmPassword = !this.showConfirmPassword;
   }
 
   submit() {
-    return this.http.post('http://localhost:3000/sign-up', this.profileForm.value).subscribe(
-      response => {
-        console.log(response)
+    return this.authService.signUp(this.profileForm.value).subscribe(
+      (response) => {
+        console.log(response);
+        this.router.navigate(['/'])
       },
-      error => {
-        console.log(error.status)
-        if (error.status == 201) {
-          this.router.navigate(['/'])
-        }
+
+      (error)=> {
+        console.log(error)
       }
     )
   }
