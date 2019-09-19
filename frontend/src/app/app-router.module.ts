@@ -7,6 +7,7 @@ import { MyPostsComponent } from './components/my-posts/my-posts.component';
 import { FriendsPostsComponent } from './components/friends-posts/friends-posts.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { NotFoundComponent } from './components/404/404.component';
+import { TokenGuard } from './guard/token.guard';
 
 const routes: Routes = [
     {
@@ -17,23 +18,23 @@ const routes: Routes = [
     },
 
     {
-        path: 'home', component: HomeComponent
+        path: 'home', component: HomeComponent, canActivate: [TokenGuard]
     },
 
     {
-        path: 'my-posts', component: MyPostsComponent
+        path: 'my-posts', component: MyPostsComponent, canActivate: [TokenGuard]
     },
 
     {
-        path: 'friends-posts', component: FriendsPostsComponent
+        path: 'friends-posts', component: FriendsPostsComponent, canActivate: [TokenGuard]
     },
 
     {
-        path: 'add-post', component: AddPostComponent
+        path: 'add-post', component: AddPostComponent, canActivate: [TokenGuard]
     },
 
     {
-        path: '**', component: NotFoundComponent,
+        path: '**', component: NotFoundComponent, canActivate: [TokenGuard]
     }
 ]
     

@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRouterModule } from './app-router.module';
-
 import { AppComponent } from './app.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
@@ -16,6 +15,7 @@ import { NotFoundComponent } from './components/404/404.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NavComponent } from './components/nav/nav.component';
 import { NotificationComponent } from './components/notification/notification.component';
+import { TokenGuard } from './guard/token.guard';
 
 
 @NgModule({
@@ -39,7 +39,7 @@ import { NotificationComponent } from './components/notification/notification.co
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [TokenGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
