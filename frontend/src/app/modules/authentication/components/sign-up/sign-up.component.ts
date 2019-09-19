@@ -1,0 +1,63 @@
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { AuthService } from '../../../../services/auth/auth.service';
+import { ConfirmPassword } from '../../../../helpers/confirm-password/confirm-password.validator';
+import { Notification } from '../../../../models/notification/notification';
+
+@Component({
+  selector: 'sign-up',
+  templateUrl: './sign-up.component.html',
+  styleUrls: ['./sign-up.component.scss'],
+  providers: [AuthService, Notification]
+})
+
+export class SignUpComponent implements OnInit {
+  profileForm: FormGroup;
+  typeFieldPassword: string = 'password';
+  typeFieldConfirmPassword = 'password';
+  showPassword: boolean = false;
+  showConfirmPassword: boolean = false;
+
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
+    private notification: Notification) { }
+
+  ngOnInit() {
+    this.profileForm = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]],
+      password: ['', [Validators.required, Validators.minLength(5)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(5)]]
+    }, {
+        validator: ConfirmPassword('password', 'confirmPassword')
+    })
+  }
+
+  togglePassword() {
+    this.typeFieldPassword = this.typeFieldPassword === 'password' ? 'text' : 'password';
+    this.showPassword = this.showPassword = !this.showPassword;
+  }
+
+  toggleConfirmPassword() {
+    this.typeFieldConfirmPassword = this.typeFieldConfirmPassword === 'password' ? 'text' : 'password';
+    this.showConfirmPassword = this.showConfirmPassword = !this.showConfirmPassword;
+  }
+
+  submit() {
+    return this.authService.signUp(this.profileForm.value).subscribe(
+      (response) => {
+        console.log(response);
+        this.router.navigate(['/'])
+      },
+
+      (error)=> {
+        console.log(error);
+        this.notification.addNotification = true;
+      }
+    )
+  }
+}
