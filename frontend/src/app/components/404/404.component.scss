@@ -1,0 +1,18 @@
+.not-found {
+    padding-top: 200px;
+    height: 100vh;
+    background: #6497b1;
+    text-align: center;
+
+    &__title {
+        font-size: 100px;
+        font-weight: 700;
+        color: #ffffff;
+    }
+
+    &__text {
+        font-size: 50px;
+        font-weight: 500;
+        color: #ffffff;
+    }
+}

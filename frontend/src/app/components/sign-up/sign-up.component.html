@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+    <title>Blog</title>
+    <link href="https://fonts.googleapis.com/css?family=El+Messiri:400,500,600,700&amp;display=swap&amp;subset=cyrillic"
+        rel="stylesheet">
+</head>
+
+<body class="page">
+    <div class="page__container">
+        <main class="main">
+            <div class="box">
+                <div class="authentication page__authentication">
+                    <div class="form">
+                        <form class="form__content" [formGroup]="profileForm">
+                            <h1 class="form__title">Sign-up</h1>
+                            <div class="form__item">
+                                <label class="form__label" for="name">Name</label>
+                                <input class="form__input" type="text" id="name" placeholder="John"
+                                    formControlName="name" required>
+                                <div *ngIf="profileForm.controls['name'].errors && !profileForm.controls['name'].pristine">
+                                    <span class="error" *ngIf="profileForm.controls['name'].errors.required">Name is required!</span>
+                                </div>
+                            </div>
+                            <div class="form__item">
+                                <label class="form__label" for="email">Email</label>
+                                <input class="form__input" type="email" id="email" placeholder="john@yandex.ru"
+                                    formControlName="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                                <div *ngIf="profileForm.controls['email'].errors && !profileForm.controls['email'].pristine">
+                                    <span class="error" *ngIf="profileForm.controls['email'].errors.required">Email is required!</span>
+                                    <span class="error" *ngIf="profileForm.controls['email'].errors.pattern">Email is not valid!</span>
+                                </div>
+                            </div>
+                            <div class="form__item">
+                                <label class="form__label" for="password">Password</label>
+                                <div class="form__password">
+                                    <input class="form__input" type="password" id="password" placeholder="12345678"
+                                        minlength="5" formControlName="password" required #input>
+                                    <button class="form__password-button" [class.active]="show === true" button="type" (click)="showPassword(input)">
+                                        <img class="form__password-img" src="../../assets/images/eye.svg" alt="Show password">
+                                    </button>
+                                    <div *ngIf="profileForm.controls['password'].errors && !profileForm.controls['password'].pristine">
+                                        <span class="error" *ngIf="profileForm.controls['password'].errors.required">Password is required!</span>
+                                        <span class="error" *ngIf="profileForm.controls['password'].errors.minlength">Minimum password length 5
+                                            characters</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="button form__button-send" type="submit" [disabled]="!profileForm.valid" (click)="submit()">
+                                <p class="button__text">Send</p>
+                            </button>
+                            <!-- END .button-->
+                        </form>
+                    </div>
+                    <!-- END .form-->
+                    <div class="registration">
+                        <p class="registration__text">If you already have a profile, log in</p>
+                        <a class="button" [routerLink]="['']">Sign-in</a>
+                    </div>
+                    <!-- END .registration-->
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

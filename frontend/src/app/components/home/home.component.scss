@@ -1,0 +1,144 @@
+// Search styles
+
+.search {
+    max-width: 100%;
+    padding: 0;
+    box-shadow: none;
+    margin: 0;
+    display: flex;
+    align-items: center;
+
+    &__sort {
+        margin-top: 20px;
+    }
+
+    &__form {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    &__input {
+        margin: 0;
+        width: calc(100% - 100px);
+    }
+
+    &__button {
+        max-width: 100px;
+        width: 100%;
+    }
+
+    &__filter {
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .search {
+        &__input {
+            width: calc(100% - 70px);
+        }
+
+        &__button {
+            max-width: 70px;
+        }
+    }
+}
+
+// Search-content styles
+
+.search-content {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 66px;
+    left: 300px; 
+    max-width: calc(100% - 300px);
+    width: 100%;
+    padding: 25px 25px 0 25px;
+    box-sizing: border-box;
+
+    &__form {
+        margin-bottom: 20px;
+    }
+
+    &__button-sort {
+        width: 50px;
+        display: none;
+
+        &.is-active {
+            display: block;
+        }
+
+        &::last-child {
+            margin-right: 0;
+        }
+    }
+}
+ 
+@media (max-width: 991px) {
+    .search-content {
+        max-width: calc(100% - 250px);
+        left: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .search-content {
+        padding: 20px 10px;
+        max-width: calc(100% - 200px);
+        left: 200px;
+    }
+}
+
+@media (max-width: 576px) {
+    .search-content {
+        max-width: 100%;
+        left: 0;
+    }
+}
+
+// Users
+
+.users {
+    padding-top: 15px;
+}
+
+.users__item {
+    margin-bottom: 20px;
+}
+
+// User
+
+.user {
+    box-shadow: 0 0 10px #6497b1;
+    border-radius: 5px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__name {
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    &__following {
+        background: url('../../../assets/images/like.svg');
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        padding: 0;
+
+        &.active {
+            background: url('../../../assets/images/like-active.svg');
+        }
+    }
+
+    &__date-registration {
+        font-size: 18px;
+        font-weight: 500;
+    }
+}

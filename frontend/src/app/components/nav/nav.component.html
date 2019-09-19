@@ -1,0 +1,17 @@
+<nav class="nav" [class.nav--opened]="active === true">
+    <ul class="nav__list">
+        <li class="nav__item">
+            <a class="nav__link" [routerLink]="['/home']" routerLinkActive="nav__link--active">Нome</a>
+        </li>
+        <li class="nav__item">
+            <a class="nav__link" [routerLink]="['/my-posts']" routerLinkActive="nav__link--active">My posts</a>
+        </li>
+        <li class="nav__item nav__item--active">
+            <a class="nav__link" [routerLink]="['/friends-posts']" routerLinkActive="nav__link--active">Friends posts</a>
+        </li>
+        <li class="nav__item">
+            <a class="nav__link" [routerLink]="['/add-post']" routerLinkActive="nav__link--active">Add post</a>
+        </li>
+    </ul>
+</nav>
+<!-- END .nav-->

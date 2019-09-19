@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+    <title>Blog</title>
+    <link href="https://fonts.googleapis.com/css?family=El+Messiri:400,500,600,700&amp;display=swap&amp;subset=cyrillic"
+        rel="stylesheet">
+</head>
+
+<body class="page">
+    <div class="page__container">
+        <app-header></app-header>
+        <main class="main">
+            <div class="box">
+                <app-nav></app-nav>
+                <div class="search-content">
+                    <div class="form search search-content__form">
+                        <form class="search__form" [formGroup]="searchForm">
+                            <input class="search__input form__input" type="text" id="search" formControlName="search"
+                                placeholder="Search" required>
+                            <button class="button search__button" type="submit" (click)="submit()">Search</button>
+                        </form>
+                    </div>
+                    <!-- END .search-->
+                    <div class="sort posts-content__sort">
+                        <button class="button sort__button">↑ ↓</button>
+                    </div>
+                    <div class="users">
+                        <div class="user users__item" *ngFor="let user of users">
+                            <p class="user__name">{{user?.name}}</p>
+                            <button class="user__following" [class.active]="active===true"
+                                (click)="toggleButton()"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

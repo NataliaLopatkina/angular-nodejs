@@ -1,0 +1,22 @@
+{
+    "postList": [
+        {
+            "title": "Title",
+            "text": "Text",
+            "date": "10-10-10",
+            "author": "Bob"
+        },
+        {
+            "title": "Title",
+            "text": "Text",
+            "date": "10-10-10",
+            "author": "Tom"
+        },
+        {
+            "title": "Title",
+            "text": "Text",
+            "date": "10-10-10",
+            "author": "Alice"
+        }
+    ]
+}

@@ -1,0 +1,46 @@
+.notification {
+    background: #ffdce0;
+    min-width: 250px;
+    padding: 20px 10px;
+    border: 1px solid #86181d;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 30px;
+    right: 50px;
+    z-index: 1000000;
+
+    &__text {
+        font-size: 14px;
+        color: #86181d;
+    }
+
+    &__button {
+        font-family: 'Arial';
+        font-size: 14px;
+        color: #86181d;
+        border: none;
+        background: none;
+        outline: none;
+        padding: 0;
+        cursor: pointer;
+        margin-left: 15px;
+    }
+
+    &--info {
+        background: #98fb98;
+        border: 1px solid #006400;
+
+        & .notification__text {
+            color: #006400;
+        }
+
+        & .notification__button {
+            color: #006400;
+        }
+
+    }
+}
+

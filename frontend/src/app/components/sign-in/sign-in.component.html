@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+    <title>Blog</title>
+    <link href="https://fonts.googleapis.com/css?family=El+Messiri:400,500,600,700&amp;display=swap&amp;subset=cyrillic"
+        rel="stylesheet">
+</head>
+
+<body class="page">
+    <div class="page__container">
+        <main class="main">
+            <div class="box">
+                <div class="authentication page__authentication">
+                    <div class="form">
+                        <form class="form__content" [formGroup]="profileForm">
+                            <h1 class="form__title">Sign-in</h1>
+                            <div class="form__item">
+                                <label class="form__label" for="email">Login or email</label>
+                                <input class="form__input" type="email" id="email" formControlName="email"
+                                    placeholder="john@yandex.ru" required>
+                                <app-notification #notification></app-notification>
+                                <div *ngIf="profileForm.controls['email'].errors && !profileForm.controls['email'].pristine">
+                                    <span class="error" *ngIf="profileForm.controls['email'].errors.required">Email is required!</span>
+                                    <span class="error" *ngIf="profileForm.controls['email'].errors.pattern">Email is not valid!</span>
+                                </div>
+                            </div>
+                            <div class="form__item">
+                                <label class="form__label" for="password">Password</label>
+                                <div class="form__password">
+                                    <input class="form__input" type="password" id="password" formControlName="password"
+                                        placeholder="12345678" minlength="6" required #input>
+                                    <button class="form__password-button" button="type" [class.active]="show === true" (click)="showPassword(input)">
+                                        <img class="form__password-img" src="../../assets/images/eye.svg" alt="Show password">
+                                    </button>
+                                    <div *ngIf="profileForm.controls['password'].errors && !profileForm.controls['password'].pristine">
+                                        <span class="error" *ngIf="profileForm.controls['password'].errors.required">Password is required!</span>
+                                        <span class="error" *ngIf="profileForm.controls['password'].errors.minlength">Minimum password length 5
+                                            characters</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="button form__button-send" type="submit" [disabled]="!profileForm.valid" 
+                            (click)="submit()">
+                                <p class="button__text">Send</p>
+                            </button>
+                            <!-- END .button-->
+                        </form>
+                    </div>
+                    <!-- END .form-->
+                    <div class="registration">
+                        <p class="registration__text">Create your own profile</p>
+                        <a class="button" [routerLink]="['sign-up']">Sign-up</a>
+                    </div>
+                    <!-- END .registration-->
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

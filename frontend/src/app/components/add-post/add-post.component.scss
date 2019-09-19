@@ -1,0 +1,23 @@
+.add-post {
+    &__title {
+        font-size: 30px;
+        font-weight: 700;
+        margin-bottom: 30px;
+    }
+
+    &__form {
+        max-width: 100%;
+        padding: 0;
+        box-shadow: none;
+    }
+
+    &__input {
+        resize: none;
+        min-height: 100px;
+    }
+
+    &__button {
+        max-width: 100px;
+        margin-left: auto;
+    }
+}
