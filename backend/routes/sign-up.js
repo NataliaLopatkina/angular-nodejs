@@ -8,10 +8,11 @@ router.post('/', async function (req, res) {
 
     if (!user) {
         await User.create({name, email, password});
-        return res.status(201).send('User is registered');
-    }
+        return res.status(201).json({ message: 'User is registered!'})
 
-    res.status(403).send('User with this email is already registered');
+    } else {
+        return res.status(403).json({message: 'User with this email is already registered!'})
+    }
 });
 
 module.exports = router;
