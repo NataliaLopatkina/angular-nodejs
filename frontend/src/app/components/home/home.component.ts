@@ -2,20 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
+import { UserService } from '../../services/user/user.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
+  providers: [UserService]
 })
 
 export class HomeComponent implements OnInit {
   active: boolean = false;
   searchForm: FormGroup;
-  error: any;
 
   constructor(
     private fb: FormBuilder,
-    private http: HttpClient) { }
+    private userService: UserService) { }
 
   ngOnInit() {
     this.searchForm = this.fb.group({
@@ -28,12 +30,12 @@ export class HomeComponent implements OnInit {
   }
 
   submit() {
-    return this.http.post('http://localhost:3000/users', this.searchForm.value).subscribe(
-      response => {
+    return this.userService.getUsers(this.searchForm.value.search).subscribe(
+      (response)=> {
         console.log(response)
-      },   
+      },
 
-      error => {
+      (error)=> {
         console.log(error)
       }
     )

@@ -12,7 +12,7 @@ const sequelize = new Sequelize('social', 'postgres', 'tosovu96', {
 const User = UserModel(sequelize, Sequelize);
 const Post = PostModel(sequelize, Sequelize);
 
-User.hasMany(Post);
+//User.hasMany(Post);
 
 sequelize.sync()
   .then(() => {
@@ -21,5 +21,5 @@ sequelize.sync()
 
 module.exports = {
   User,
-  Post
+  Post,
 };

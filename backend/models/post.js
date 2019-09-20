@@ -20,6 +20,11 @@ module.exports = (sequilize, type) => {
         date: {
             type: type.DATE,
             allowNull: false,
-        }
+        },
+
+        // author_id: {
+        //     type: type.INTEGER,
+        //     allowNull: false,
+        // }
     })
 }

@@ -1,24 +1,27 @@
 var express = require('express');
 var router  = express.Router();
-const sequelize = require('../sequelize');
+const { User } = require('../sequelize');
+const Sequelize = require('sequelize');
 
 router.get('/', async function(req, res) {
-    //const id = req.user.id;
-    const { params } = req.body;
+    // const id = req.user.id;
+    const { value } = req.query;
+    const Op = Sequelize.Op;
+
+    const users = await User.findAll({ where: { name: { [Op.iLike]: `%${value}%`}}});
     
     // const result = await sequelize.query(`SELECT users.id, users.name, users.email, followers.follower 
     // FROM users LEFT JOIN followers on users.id = followers.following' 
     // AND name ILIKE '%${params}%'`, { type: sequelize.QueryTypes.SELECT });
     
-    // if (result.length > 0) {
-    //     res.send({
-    //       users:  result
-    //     })
-    // } else {
-    //     res.status(404).send('Users are not found!')
-    // }
+    if (users.length > 0) {
+        res.status(200).json({data: users })
+    } else {
+        res.status(404).json({message: 'Users are not found!'});
+    }
 
-    console.log('fdssfs')
+    console.log(users)
+
 });
 
 module.exports = router;

@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRouterModule } from './app-router.module';
 import { AppComponent } from './app.component';
+
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { HomeComponent } from './components/home/home.component';
@@ -15,8 +16,10 @@ import { NotFoundComponent } from './components/404/404.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NavComponent } from './components/nav/nav.component';
 import { NotificationComponent } from './components/notification/notification.component';
+
 import { TokenGuard } from './guard/token.guard';
 
+import { TogglePasswordDirective } from './directives/toggle-password.directive';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,8 @@ import { TokenGuard } from './guard/token.guard';
     FriendsPostsComponent,
     AddPostComponent,
     NotFoundComponent,
-    NotificationComponent
+    NotificationComponent,
+    TogglePasswordDirective,
   ],
   imports: [
     BrowserModule,

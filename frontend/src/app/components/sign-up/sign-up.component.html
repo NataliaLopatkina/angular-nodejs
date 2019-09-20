@@ -39,7 +39,7 @@
                                 <label class="form__label" for="password">Password</label>
                                 <div class="form__password">
                                     <input class="form__input" [type]=typeFieldPassword id="password" placeholder="12345678"
-                                        minlength="5" formControlName="password" required>
+                                        minlength="5" formControlName="password" autocomplete="true" required>
                                     <button class="form__password-button" [class.active]="showPassword === true" button="type" (click)="togglePassword()">
                                         <img class="form__password-img" src="../../assets/images/eye.svg" alt="Show password">
                                     </button>
@@ -51,11 +51,11 @@
                                 </div>
                             </div>
                             <div class="form__item">
-                                <label class="form__label" for="password">Confirm password</label>
+                                <label class="form__label" for="confirmPassword">Confirm password</label>
                                 <div class="form__password">
-                                    <input class="form__input" [type]=typeFieldConfirmPassword id="password" placeholder="12345678" minlength="5"
-                                        formControlName="confirmPassword" required>
-                                    <button class="form__password-button" [class.active]="showConfirmPassword === true" button="type" (click)="toggleConfirmPassword()">
+                                    <input class="form__input" [type]=typeFieldConfirmPassword id="confirmPassword" placeholder="12345678" minlength="5"
+                                        formControlName="confirmPassword" autocomplete="true" required>
+                                    <button class="form__password-button" button="type" (click)="toggleConfirmPassword()">
                                         <img class="form__password-img" src="../../assets/images/eye.svg" alt="Show password">
                                     </button>
                                     <div *ngIf="profileForm.controls['confirmPassword'].errors && !profileForm.controls['confirmPassword'].pristine">

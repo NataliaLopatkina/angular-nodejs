@@ -21,7 +21,7 @@
                         <form class="search__form" [formGroup]="searchForm">
                             <input class="search__input form__input" type="text" id="search" formControlName="search"
                                 placeholder="Search" required>
-                            <button class="button search__button" type="submit" (click)="submit()">Search</button>
+                            <button class="button search__button" type="submit" (click)="submit(users)">Search</button>
                         </form>
                     </div>
                     <!-- END .search-->
@@ -29,7 +29,7 @@
                         <button class="button sort__button">↑ ↓</button>
                     </div>
                     <div class="users">
-                        <div class="user users__item" *ngFor="let user of users">
+                        <div class="user users__item" *ngFor="let user of response">
                             <p class="user__name">{{user?.name}}</p>
                             <button class="user__following" [class.active]="active===true"
                                 (click)="toggleButton()"></button>

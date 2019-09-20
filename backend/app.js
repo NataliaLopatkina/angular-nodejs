@@ -14,9 +14,9 @@ app.listen(3000);
 
 app.use('/', signInRouter);
 app.use('/sign-up', signUpRouter);
-app.use('/users', verifyToken, userRouter);
-app.use('/add-post', verifyToken, addPostRouter);
-app.use('/following', verifyToken, followingRouter);
-app.use('/posts', verifyToken, postsRouter);
+app.use('/users', userRouter);
+app.use('/add-post', addPostRouter);
+app.use('/following', followingRouter);
+app.use('/posts', postsRouter);
 
 module.exports = app;
