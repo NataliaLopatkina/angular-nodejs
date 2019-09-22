@@ -3,8 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AuthService } from '../../services/auth/auth.service';
-
-import { ConfirmPassword } from '../../helpers/confirm-password/confirm-password.validator';
+import { MustMatch } from '../../helpers/must-match.validator';
 
 @Component({
   selector: 'sign-up',
@@ -32,7 +31,7 @@ export class SignUpComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(5)]],
       confirmPassword: ['', [Validators.required, Validators.minLength(5)]]
     }, {
-        validator: ConfirmPassword('password', 'confirmPassword')
+        validator: MustMatch('password', 'confirmPassword')
     })
   }
 
@@ -47,7 +46,8 @@ export class SignUpComponent implements OnInit {
   }
 
   submit() {
-    return this.authService.signUp(this.profileForm.value).subscribe(
+    return this.authService.signUp(this.profileForm.value)
+    .subscribe(
       (response) => {
         console.log(response);
         this.router.navigate(['/'])

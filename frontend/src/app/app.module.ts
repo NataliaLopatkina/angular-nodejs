@@ -17,9 +17,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { NavComponent } from './components/nav/nav.component';
 import { NotificationComponent } from './components/notification/notification.component';
 
-import { TokenGuard } from './guard/token.guard';
-
-import { TogglePasswordDirective } from './directives/toggle-password.directive';
+import { AuthGuard } from './guards/auth.guard';
+import { JwtInterceptor } from './helpers/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -34,7 +33,6 @@ import { TogglePasswordDirective } from './directives/toggle-password.directive'
     AddPostComponent,
     NotFoundComponent,
     NotificationComponent,
-    TogglePasswordDirective,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +41,7 @@ import { TogglePasswordDirective } from './directives/toggle-password.directive'
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [TokenGuard],
+  providers: [AuthGuard, JwtInterceptor],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

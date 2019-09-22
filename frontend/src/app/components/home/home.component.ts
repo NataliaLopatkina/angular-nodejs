@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
+import { User } from '../../models/user/user';
 import { UserService } from '../../services/user/user.service';
 
 @Component({
@@ -14,6 +14,7 @@ import { UserService } from '../../services/user/user.service';
 export class HomeComponent implements OnInit {
   active: boolean = false;
   searchForm: FormGroup;
+  users: User[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -30,13 +31,10 @@ export class HomeComponent implements OnInit {
   }
 
   submit() {
-    return this.userService.getUsers(this.searchForm.value.search).subscribe(
-      (response)=> {
-        console.log(response)
-      },
-
-      (error)=> {
-        console.log(error)
+    this.userService.getUsers(this.searchForm.value.search).subscribe(
+      (data)=> {
+        this.users = data['data'],
+        console.log(this.users);
       }
     )
   }

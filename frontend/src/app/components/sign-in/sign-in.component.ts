@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -34,10 +34,10 @@ export class SignInComponent implements OnInit {
   }
 
   submit() {
-    return this.authService.signIn(this.profileForm.value).subscribe(
-      (response) => {
-        console.log(response)
-        this.router.navigate(['/home']);
+    return this.authService.signIn(this.profileForm.value.email, this.profileForm.value.password)
+    .subscribe(
+      (data) => {
+        this.router.navigateByUrl('/home');
       },
 
       (error) => {
