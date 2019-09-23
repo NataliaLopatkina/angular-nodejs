@@ -12,8 +12,8 @@ export class PostService {
         return this.http.post('http://localhost:3000/add-post', data)
     }
 
-    public getPost(id, type) {
-        const params = { id: id, type: type }
+    public getPost(type) {
+        const params = { type: type }
         return this.http.get('http://localhost:3000/posts', { params })
     }
 }

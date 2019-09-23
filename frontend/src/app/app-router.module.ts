@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
-import { AuthGuard } from './guards/auth.guard';
-
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { HomeComponent } from './components/home/home.component';
@@ -10,6 +8,8 @@ import { MyPostsComponent } from './components/my-posts/my-posts.component';
 import { FriendsPostsComponent } from './components/friends-posts/friends-posts.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { NotFoundComponent } from './components/404/404.component';
+
+import { AuthGuard } from './guards/auth.guard';
 
 
 const routes: Routes = [

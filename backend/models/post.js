@@ -13,7 +13,7 @@ module.exports = (sequilize, type) => {
         },
 
         text: {
-            type: type.STRING,
+            type: type.STRING(1234),
             allowNull: false,
         },
 
@@ -22,9 +22,9 @@ module.exports = (sequilize, type) => {
             allowNull: false,
         },
 
-        // author_id: {
-        //     type: type.INTEGER,
-        //     allowNull: false,
-        // }
+        author_id: {
+            type: type.INTEGER,
+            allowNull: false,
+        }
     })
 }

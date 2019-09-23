@@ -14,9 +14,9 @@ router.post('/', async function (req, res) {
         const token = jwt.sign({ id: user.id, name: user.name, email: user.email, password: user.password },
             'secret', { expiresIn: '1h' });
 
-        res.cookie('token', token, { maxAge: 900000 * 60, httpOnly: false });
+        //res.cookie('token', token, { maxAge: 900000 * 60, httpOnly: false });
 
-        return res.status(200).json({ message: 'User found!'})
+        return res.status(200).json({ message: 'User found!', token: token})
     }
 });
 

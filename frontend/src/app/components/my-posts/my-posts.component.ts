@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Post } from '../../models/post/post';
 import { PostService } from '../../services/post/post.service';
 
 @Component({
@@ -9,16 +10,15 @@ import { PostService } from '../../services/post/post.service';
   providers: [PostService],
 })
 export class MyPostsComponent implements OnInit {
-
-  id: number = 15;
   type: string = 'MyPosts';
+  posts: Post[] = [];
 
   constructor(private postService: PostService) {}
 
   ngOnInit() {
-    this.postService.getPost(this.id, this.type).subscribe(
-      (response)=> {
-        console.log(response)
+    this.postService.getPost(this.type).subscribe(
+      (posts)=> {
+        this.posts = posts['data'];
       },
 
       (error)=> {

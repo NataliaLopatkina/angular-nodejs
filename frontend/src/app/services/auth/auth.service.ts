@@ -15,13 +15,15 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
+  public provideAccess() {
+    return this.isAuth;
+  }
+
   public signIn(email, password) {
     return this.http.post<any>('http://localhost:3000/', { email, password })
       .pipe(map(user => {
-        localStorage.setItem('token', JSON.stringify(user));
+        localStorage.setItem('token', JSON.stringify(user.token));
         this.isAuth = true;
-
-        console.log(this.isAuth)
       }));
   }
 

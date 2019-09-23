@@ -19,6 +19,7 @@ import { NotificationComponent } from './components/notification/notification.co
 
 import { AuthGuard } from './guards/auth.guard';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
+import { FollowingDirective } from './directives/following.directive';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { JwtInterceptor } from './helpers/jwt.interceptor';
     AddPostComponent,
     NotFoundComponent,
     NotificationComponent,
+    FollowingDirective,
   ],
   imports: [
     BrowserModule,

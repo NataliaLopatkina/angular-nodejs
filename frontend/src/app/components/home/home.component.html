@@ -31,8 +31,7 @@
                     <div class="users">
                         <div class="user users__item" *ngFor="let user of users">
                             <p class="user__name">{{user?.name}}</p>
-                            <button class="user__following" [class.active]="active===true"
-                                (click)="toggleButton()"></button>
+                            <button class="user__following" [following]></button>
                         </div>
                     </div>
                 </div>

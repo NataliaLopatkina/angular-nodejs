@@ -5,23 +5,24 @@ const Sequelize = require('sequelize');
 
 router.get('/', async function (req, res) {
     // /const { id } = req.user;
-    const { id, type } = req.query;
+    const { type } = req.query;
+    const id = 15; // Брать нужно из токена
     const Op = Sequelize.Op;
 
     if (type == 'MyPosts') {
-        const posts = await Post.findAll({where: {id: 7}});
+        const posts = await Post.findAll({where: {author_id: id}});
 
         if (posts.length > 0) {
-            return res.status(200).json(posts);
+            return res.status(200).json({data: posts, message: 'Posts found!'});
 
         } else {
             return res.status(404).json({ message: 'Posts not found!' });
         }
     } else if (type == 'FriendsPosts') {
-        const posts = await Post.findAll({ where: { id: { [Op.ne]: 7 }}});
+        const posts = await Post.findAll({ where: { author_id: { [Op.ne]: id }}});
 
         if (posts.length > 0) {
-            return res.status(200).json(posts);
+            return res.status(200).json({data: posts, message: 'Posts found!'});
 
         } else {
             return res.status(404).json({ message: 'Posts not found!' });

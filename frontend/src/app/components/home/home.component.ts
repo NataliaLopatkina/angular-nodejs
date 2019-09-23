@@ -12,7 +12,6 @@ import { UserService } from '../../services/user/user.service';
 })
 
 export class HomeComponent implements OnInit {
-  active: boolean = false;
   searchForm: FormGroup;
   users: User[] = [];
 
@@ -26,14 +25,10 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  toggleButton() {
-    this.active = this.active = !this.active;
-  }
-
   submit() {
     this.userService.getUsers(this.searchForm.value.search).subscribe(
-      (data)=> {
-        this.users = data['data'],
+      (users)=> {
+        this.users = users['data'],
         console.log(this.users);
       }
     )
