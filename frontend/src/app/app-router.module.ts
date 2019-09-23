@@ -21,23 +21,23 @@ const routes: Routes = [
     },
 
     {
-        path: 'home', component: HomeComponent, canActivate: [AuthGuard]
+        path: 'home', component: HomeComponent
     },
 
     {
-        path: 'my-posts', component: MyPostsComponent, canActivate: [AuthGuard]
+        path: 'my-posts', component: MyPostsComponent
     },
 
     {
-        path: 'friends-posts', component: FriendsPostsComponent, canActivate: [AuthGuard]
+        path: 'friends-posts', component: FriendsPostsComponent
     },
 
     {
-        path: 'add-post', component: AddPostComponent, canActivate: [AuthGuard]
+        path: 'add-post', component: AddPostComponent
     },
 
     {
-        path: '**', component: NotFoundComponent, canActivate: [AuthGuard]
+        path: '**', component: NotFoundComponent
     }
 ]
     

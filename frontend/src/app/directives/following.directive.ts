@@ -1,4 +1,4 @@
-import { Directive, HostListener, Input, HostBinding} from '@angular/core';
+import { Directive, HostListener, Input, HostBinding } from '@angular/core';
 
 @Directive({
     selector: '[following]'

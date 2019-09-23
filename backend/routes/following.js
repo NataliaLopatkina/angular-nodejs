@@ -2,25 +2,29 @@ const express = require('express');
 const router = express.Router();
 const sequelize = require('../sequelize');
 
-router.post('/', async function (req, res) {
-    const myID = req.user.id;
-    const { following } = req.body;
+router.post('/', function (req, res) {
 
-    const [[followingUser]] = await sequelize.query(`SELECT*FROM followers WHERE (follower = '${myID}' 
-    AND following = '${following}')`)
+    console.log('jhbghjb')
+    // const myID = req.user.id;
+    // const { following } = req.body;
 
-    if (followingUser) {
-        await sequelize.query(`DELETE FROM followers WHERE (follower = '${myID}' 
-        AND following = '${following}')`, { type: sequelize.QueryTypes.DELETE })
+    // const [[followingUser]] = await sequelize.query(`SELECT*FROM followers WHERE (follower = '${myID}' 
+    // AND following = '${following}')`)
 
-        res.status(204).send('You are removed from the subscribers of this user');
-    }
+    // if (followingUser) {
+    //     await sequelize.query(`DELETE FROM followers WHERE (follower = '${myID}' 
+    //     AND following = '${following}')`, { type: sequelize.QueryTypes.DELETE })
 
-    else {
-        await sequelize.query(`INSERT INTO followers (follower, following) VALUES('${myID}', '${following}')`)
+    //     res.status(204).send('You are removed from the subscribers of this user');
+    // }
 
-        res.status(201).send('You are added to the followers list of this user.');
-    }
+    // else {
+    //     await sequelize.query(`INSERT INTO followers (follower, following) VALUES('${myID}', '${following}')`)
+
+    //     res.status(201).send('You are added to the followers list of this user.');
+    // }
+
+    // /res.json({message: 'ok'})
 });
 
 module.exports = router;
