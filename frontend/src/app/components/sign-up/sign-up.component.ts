@@ -9,7 +9,6 @@ import { MustMatch } from '../../helpers/must-match.validator';
   selector: 'sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss'],
-  providers: [AuthService],
 })
 
 export class SignUpComponent implements OnInit {

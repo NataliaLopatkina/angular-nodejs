@@ -21,6 +21,9 @@ import { AuthGuard } from './guards/auth.guard';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { FollowingDirective } from './directives/following.directive';
 
+import { AuthService } from './services/auth.service';
+import { ToggleMenuService } from './services/toggle-menu.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +46,10 @@ import { FollowingDirective } from './directives/following.directive';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [AuthGuard,
+  providers: [
+    AuthGuard,
+    AuthService,
+    ToggleMenuService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
 ],
   bootstrap: [AppComponent]

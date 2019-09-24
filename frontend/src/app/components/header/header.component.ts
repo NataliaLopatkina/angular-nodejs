@@ -5,10 +5,9 @@ import { ToggleMenuService } from '../../services/toggle-menu.service';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  providers: [ToggleMenuService]
 })
+
 export class HeaderComponent implements OnInit {
-  closeButton:boolean = false;
 
   constructor(private toggleMenuService: ToggleMenuService) { }
 
@@ -16,6 +15,6 @@ export class HeaderComponent implements OnInit {
   }
 
   menuHandler() {
-    this.toggleMenuService.toggleButton(this.closeButton);
+    this.toggleMenuService.toogleMenu();
   }
 }

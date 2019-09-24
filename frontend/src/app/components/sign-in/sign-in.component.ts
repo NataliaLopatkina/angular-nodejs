@@ -8,7 +8,6 @@ import { AuthService } from '../../services/auth.service';
   selector: 'sign-in',
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss'],
-  providers: [AuthService]
 })
 
 export class SignInComponent implements OnInit {
