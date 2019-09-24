@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Post } from '../../models/post/post';
-import { PostService } from '../../services/post/post.service';
+import { Post } from '../../models/post';
+import { PostService } from '../../services/post.service';
 
 @Component({
   selector: 'app-friends-posts',

@@ -1,9 +1,8 @@
 <header class="header">
     <div class="box">
         <div class="header__content">
-            <button class="button-menu header__button-menu" 
-                [class.button-menu--closed]="closed === true" 
-                type="button" (click)="toggleMenu(menu.toggleNav())">
+            <button class="button-menu header__button-menu" [class.button-menu--closed]="closeButton==true"
+                (click)="menuHandler()">
                 <span class="button-menu__line"></span>
             </button>
             <p class="header__user">Hi, </p>

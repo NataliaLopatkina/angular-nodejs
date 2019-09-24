@@ -21,19 +21,19 @@ const routes: Routes = [
     },
 
     {
-        path: 'home', component: HomeComponent
+        path: 'home', component: HomeComponent, canActivate: [AuthGuard]
     },
 
     {
-        path: 'my-posts', component: MyPostsComponent
+        path: 'my-posts', component: MyPostsComponent, canActivate: [AuthGuard]
     },
 
     {
-        path: 'friends-posts', component: FriendsPostsComponent
+        path: 'friends-posts', component: FriendsPostsComponent, canActivate: [AuthGuard]
     },
 
     {
-        path: 'add-post', component: AddPostComponent
+        path: 'add-post', component: AddPostComponent, canActivate: [AuthGuard]
     },
 
     {

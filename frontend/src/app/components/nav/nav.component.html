@@ -1,4 +1,4 @@
-<nav class="nav" [class.nav--opened]="active === true">
+<nav class="nav">
     <ul class="nav__list">
         <li class="nav__item">
             <a class="nav__link" [routerLink]="['/home']" routerLinkActive="nav__link--active">Нome</a>
@@ -11,6 +11,11 @@
         </li>
         <li class="nav__item">
             <a class="nav__link" [routerLink]="['/add-post']" routerLinkActive="nav__link--active">Add post</a>
+        </li>
+    </ul>
+    <ul class="nav__list nav__list--user">
+        <li class="nav__item">
+            <button class="nav__link nav__link--out" (click)="logOut()">Log out</button>
         </li>
     </ul>
 </nav>

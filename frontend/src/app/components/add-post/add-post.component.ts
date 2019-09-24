@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { PostService } from '../../services/post/post.service';
+import { PostService } from '../../services/post.service';
 
 @Component({
   selector: 'app-add-post',

@@ -1,23 +1,21 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ToggleMenuService } from '../../services/toggle-menu.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
+  providers: [ToggleMenuService]
 })
 export class HeaderComponent implements OnInit {
+  closeButton:boolean = false;
 
-  closed = false;
-
-  toggleMenu() {
-    this.closed = this.closed = !this.closed;
-  }
-
-  constructor() { }
+  constructor(private toggleMenuService: ToggleMenuService) { }
 
   ngOnInit() {
   }
 
-  @Input() menu;
-
+  menuHandler() {
+    this.toggleMenuService.toggleButton(this.closeButton);
+  }
 }

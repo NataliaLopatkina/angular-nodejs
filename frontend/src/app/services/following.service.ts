@@ -7,7 +7,7 @@ export class FollowingService {
     constructor(
         private http: HttpClient) { }
 
-    public addFollowing(idFollowing) {
-        return this.http.post('http://localhost:3000/following', idFollowing)
+    public addFollowing(userId) {
+        return this.http.post('http://localhost:3000/following', {userId})
     }
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { AuthService } from '../../services/auth/auth.service';
+import { AuthService } from '../../services/auth.service';
   
 @Component({
   selector: 'sign-in',
@@ -34,7 +34,7 @@ export class SignInComponent implements OnInit {
   }
 
   submit() {
-    return this.authService.signIn(this.profileForm.value.email, this.profileForm.value.password)
+    return this.authService.signIn(this.profileForm.value)
     .subscribe(
       (data) => {
         this.router.navigateByUrl('/home');

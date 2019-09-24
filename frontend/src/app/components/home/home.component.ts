@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
-import { User } from '../../models/user/user';
-import { UserService } from '../../services/user/user.service';
-import { FollowingService } from '../../services/following/following.service';
+import { User } from '../../models/user';
+import { UserService } from '../../services/user.service';
+import { FollowingService } from '../../services/following.service';
 
 @Component({
   selector: 'app-home',
@@ -36,17 +36,16 @@ export class HomeComponent implements OnInit {
     )
   }
 
-  handlerFollowing(id) {
-    console.log(id)
-    this.followingService.addFollowing(id)
-    //.subscribe(
-      // (response)=> {
-      //   console.log(response)
-      // },
+  handlerFollowing(userId) {
+    this.followingService.addFollowing(userId)
+    .subscribe(
+      (response)=> {
+        console.log(response)
+      },
 
-      // (error)=> {
-      //   console.log(error);
-      // }
-    // )
+      (error)=> {
+        console.log(error);
+      }
+    )
   }
 }

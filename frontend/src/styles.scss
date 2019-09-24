@@ -406,7 +406,7 @@ body a {
     border-radius: 5px;
     cursor: pointer;
     outline: none;
-    display: block;
+    display: inline-block;
     transition-property: background, color, border;
     transition-duration: 0.25s;
     transition-timing-function: ease;
