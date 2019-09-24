@@ -4,9 +4,8 @@ const { Post } = require('../sequelize');
 const Sequelize = require('sequelize');
 
 router.get('/', async function (req, res) {
-    // /const { id } = req.user;
     const { type } = req.query;
-    const id = 15; // Брать нужно из токена
+    const id = req.user.id;
     const Op = Sequelize.Op;
 
     if (type == 'MyPosts') {

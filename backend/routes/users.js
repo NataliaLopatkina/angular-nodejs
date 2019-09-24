@@ -4,11 +4,11 @@ const { User } = require('../sequelize');
 const Sequelize = require('sequelize');
 
 router.get('/', async function(req, res) {
-    const userId = 15; // Собственный id нужно брать из токена
+    const id = req.user.id;
     const { value } = req.query;
     const Op = Sequelize.Op;
 
-    const users = await User.findAll({ where: { name: { [Op.iLike]: `%${value}%` }, id: { [Op.ne]: userId }}});
+    const users = await User.findAll({ where: { name: { [Op.iLike]: `%${value}%` }, id: { [Op.ne]: id }}});
     
     // const result = await sequelize.query(`SELECT users.id, users.name, users.email, followers.follower 
     // FROM users LEFT JOIN followers on users.id = followers.following' 
@@ -19,7 +19,6 @@ router.get('/', async function(req, res) {
     } else {
         res.status(404).json({message: 'Users are not found!'});
     }
-
 });
 
 module.exports = router;

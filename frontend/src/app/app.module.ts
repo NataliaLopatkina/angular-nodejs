@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRouterModule } from './app-router.module';
 import { AppComponent } from './app.component';
@@ -43,7 +43,9 @@ import { FollowingDirective } from './directives/following.directive';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [AuthGuard, JwtInterceptor],
+  providers: [AuthGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
