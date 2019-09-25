@@ -20,9 +20,11 @@ import { NotificationComponent } from './components/notification/notification.co
 import { AuthGuard } from './guards/auth.guard';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { FollowingDirective } from './directives/following.directive';
+import { TogglePasswordDirective } from './directives/toggle-password.directive';
 
 import { AuthService } from './services/auth.service';
 import { ToggleMenuService } from './services/toggle-menu.service';
+import { NotificationService } from './services/notification.service';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { ToggleMenuService } from './services/toggle-menu.service';
     NotFoundComponent,
     NotificationComponent,
     FollowingDirective,
+    TogglePasswordDirective
   ],
   imports: [
     BrowserModule,
@@ -50,6 +53,7 @@ import { ToggleMenuService } from './services/toggle-menu.service';
     AuthGuard,
     AuthService,
     ToggleMenuService,
+    NotificationService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
 ],
   bootstrap: [AppComponent]

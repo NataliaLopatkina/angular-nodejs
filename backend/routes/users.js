@@ -17,7 +17,7 @@ router.get('/', async function(req, res) {
     if (users.length > 0) {
         res.status(200).json({data: users })
     } else {
-        res.status(404).json({message: 'Users are not found!'});
+        res.status(404).json({message: 'Users not found!'});
     }
 });
 

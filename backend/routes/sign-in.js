@@ -14,7 +14,7 @@ router.post('/', async function (req, res) {
         const token = jwt.sign({ id: user.id, name: user.name, email: user.email, password: user.password },
             'secret', { expiresIn: '1h' });
 
-        return res.status(200).json({ message: 'User found!', token: token})
+        return res.status(200).json({ message: 'User found!', token: token, user: user});
     }
 });
 

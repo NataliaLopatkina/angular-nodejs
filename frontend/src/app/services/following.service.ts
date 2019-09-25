@@ -3,11 +3,9 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class FollowingService {
+    constructor(private http: HttpClient) { }
 
-    constructor(
-        private http: HttpClient) { }
-
-    public addFollowing(userId) {
-        return this.http.post('http://localhost:3000/following', {userId})
+    public addFollowing(following) {
+        return this.http.post('http://localhost:3000/following', {following})
     }
 }

@@ -17,6 +17,7 @@ router.get('/', async function (req, res) {
         } else {
             return res.status(404).json({ message: 'Posts not found!' });
         }
+        
     } else if (type == 'FriendsPosts') {
         const posts = await Post.findAll({ where: { author_id: { [Op.ne]: id }}});
 

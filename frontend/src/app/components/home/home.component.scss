@@ -21,6 +21,11 @@
     &__input {
         margin: 0;
         width: calc(100% - 100px);
+
+        &.ng-dirty.ng-invalid {
+            color: #6497b1;
+            border: 1px solid #6497b1;
+        }
     }
 
     &__button {

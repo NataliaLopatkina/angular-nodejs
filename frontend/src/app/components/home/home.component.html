@@ -15,13 +15,14 @@
         <app-header></app-header>
         <main class="main">
             <div class="box">
+                <app-notification></app-notification>
                 <app-nav></app-nav>
                 <div class="search-content">
                     <div class="form search search-content__form">
                         <form class="search__form" [formGroup]="searchForm">
                             <input class="search__input form__input" type="text" id="search" formControlName="search"
                                 placeholder="Search" required>
-                            <button class="button search__button" type="submit" (click)="submit(users)">Search</button>
+                            <button class="button search__button" type="submit" (click)="searchUser(users)">Search</button>
                         </form>
                     </div>
                     <!-- END .search-->

@@ -554,7 +554,7 @@ body a {
     display: none;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
     .button-menu {
         display: block;
         width: 28px;
@@ -656,21 +656,15 @@ body a {
 
 @media (max-width: 991px) {
     .posts-content {
-        max-width: calc(100% - 250px);
-        left: 250px;
+        max-width: calc(100% - 200px);
+        padding: 15px 15px 0 15px;
+        left: 200px;
     }
 }
 
 @media (max-width: 768px) {
     .posts-content {
         padding: 20px 10px;
-        max-width: calc(100% - 200px);
-        left: 200px;
-    }
-}
-
-@media (max-width: 576px) {
-    .posts-content {
         max-width: 100%;
         left: 0;
     }
@@ -683,54 +677,26 @@ body a {
     flex-wrap: wrap;
     margin: -15px;
     margin-bottom: 15px;
+
+    &__item {
+        margin: 15px;
+    }
 }
 
 @media (max-width: 768px) {
     .posts-list {
         margin: -8px;
+
+        &__item {
+            margin: 8px;
+        }
     }
 }
 
-// Posts item styles
-
-.posts-item {
-    max-width: calc(100%/2 - 30px);
-    width: 100%;
-    margin: 15px;
-
-    &__title {
-        font-size: 18px;
-        font-weight: 600;
-        text-decoration: none;
-        display: inline-block;
-        margin-bottom: 15px;
-    }
-
-    &__text {
-        font-size: 15px;
-        text-align: justify;
-        margin-bottom: 10px;
-    }
-
-    &__author {
-        font-size: 15px;
-        font-weight: 500;
-        margin-bottom: 5px;
-    }
-
-    &__user {
-        font-size: 15px;
-        font-weight: 400;
-        display: inline-block;
-        margin-left: 10px;
-    }
-}
-
-@media (max-width: 768px) {
-    .posts-item {
-        max-width: calc(100%/2 - 16px);
-        margin: 8px;
-    }
+@media (max-width: 576px) {
+  .posts-list {
+    flex-direction: column;
+  }
 }
 
 // Posts
@@ -744,7 +710,6 @@ body a {
 .post {
     max-width: calc(100%/2 - 30px);
     width: 100%;
-    margin: 15px;
 
     &__title {
         font-size: 18px;
@@ -771,7 +736,12 @@ body a {
 @media (max-width: 768px) {
     .post {
         max-width: calc(100%/2 - 16px);
-        margin: 8px;
     }
+}
+
+@media (max-width: 576px) {
+  .post {
+    max-width: calc(100% - 16px);
+  }
 }
 

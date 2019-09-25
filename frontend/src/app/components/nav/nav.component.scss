@@ -15,12 +15,6 @@
         }
     }
 
-    &__item--page-home {
-        &:first-child {
-            display: none;
-        }
-    }
-
     &__link {
         font-size: 20px;
         color: #ffffff;
@@ -44,44 +38,32 @@
         border: none;
         width: 100%;
         text-align: left;
-        transition: opacity 0.25s ease;
-
-        &:hover {
-            background: transparent;
-            opacity: 0.7;
-        }
-
-        &:focus {
-            outline: none;
-        }
-
-        &:active {
-            opacity: 0.4;
-        }
     }
 }
 
 @media (max-width: 991px) {
     .nav {
-        max-width: 250px;
+        max-width: 200px;
     }
 }
 
 @media (max-width: 768px) {
     .nav {
-        max-width: 200px;
-    }
-}
-
-@media (max-width: 576px) {
-    .nav {
+        max-width: 250px;
         top: 72px;
-        left: -200px;
+        left: -250px;
         transition: left 0.3s ease;
 
         &.is-open {
             z-index: 10000;
             left: 0;
         }
+    }
+}
+
+@media (max-width: 576px) {
+    .nav {
+        left: -100%;
+        max-width: 100%;
     }
 }

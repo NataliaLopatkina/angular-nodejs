@@ -7,7 +7,7 @@ router.post('/', async function (req, res) {
     const author_id = req.user.id;
     const date = new Date();
 
-    await Post.create({ title: title, text: text, date, author_id });
+    await Post.create({ title, text, date, author_id });
     return res.status(201).json({message: 'Post added!'});
 });
 

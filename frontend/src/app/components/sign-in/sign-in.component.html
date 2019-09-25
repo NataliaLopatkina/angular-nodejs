@@ -14,6 +14,7 @@
     <div class="page__container">
         <main class="main">
             <div class="box">
+                <app-notification></app-notification>
                 <div class="authentication page__authentication">
                     <div class="form">
                         <form class="form__content" [formGroup]="profileForm">
@@ -22,7 +23,6 @@
                                 <label class="form__label" for="email">Login or email</label>
                                 <input class="form__input" type="email" id="email" formControlName="email"
                                     placeholder="john@yandex.ru" required>
-                                <app-notification #notification></app-notification>
                                 <div *ngIf="profileForm.controls['email'].errors && !profileForm.controls['email'].pristine">
                                     <span class="error" *ngIf="profileForm.controls['email'].errors.required">Email is required!</span>
                                     <span class="error" *ngIf="profileForm.controls['email'].errors.pattern">Email is not valid!</span>

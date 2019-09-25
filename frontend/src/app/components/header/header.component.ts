@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import { ToggleMenuService } from '../../services/toggle-menu.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,13 +10,16 @@ import { ToggleMenuService } from '../../services/toggle-menu.service';
 })
 
 export class HeaderComponent implements OnInit {
-
-  constructor(private toggleMenuService: ToggleMenuService) { }
+  constructor(
+    private toggleMenuService: ToggleMenuService,
+    private authService: AuthService) { }
 
   ngOnInit() {
+    this.authService.getUserName();
   }
 
   menuHandler() {
     this.toggleMenuService.toogleMenu();
   }
+
 }

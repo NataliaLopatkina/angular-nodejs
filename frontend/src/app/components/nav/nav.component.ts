@@ -1,24 +1,24 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from '../../services/auth.service';
 import { ToggleMenuService } from '../../services/toggle-menu.service';
 
 @Component({
-  selector: 'app-nav',
-  templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.scss'],
+    selector: 'app-nav',
+    templateUrl: './nav.component.html',
+    styleUrls: ['./nav.component.scss'],
 })
 
 export class NavComponent implements OnInit {
 
-  constructor(
-    private authService: AuthService,
-    private toggleMenuService: ToggleMenuService) { }
+    constructor(
+        private authService: AuthService,
+        private toggleMenuService: ToggleMenuService) { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
-  logOut() {
-    this.authService.logout();
-  }
+    logOut() {
+        this.authService.logout();
+    }
 }
