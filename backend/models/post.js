@@ -22,7 +22,7 @@ module.exports = (sequilize, type) => {
             allowNull: false,
         },
 
-        author_id: {
+        authorId: {
             type: type.INTEGER,
             allowNull: false,
         }

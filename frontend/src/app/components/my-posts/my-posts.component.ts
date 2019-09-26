@@ -20,8 +20,8 @@ export class MyPostsComponent implements OnInit {
 
     ngOnInit() {
         this.postService.getPost(this.type).subscribe(
-            (posts) => {
-                this.posts = posts['data'];
+            (response) => {
+                this.posts = response['posts'];
             },
 
             (error) => {

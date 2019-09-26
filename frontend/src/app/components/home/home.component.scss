@@ -83,16 +83,17 @@
  
 @media (max-width: 991px) {
     .search-content {
-        max-width: calc(100% - 250px);
-        left: 250px;
+        padding: 15px 15px 0 15px;
+        max-width: calc(100% - 200px);
+        left: 200px;
     }
 }
 
 @media (max-width: 768px) {
     .search-content {
         padding: 20px 10px;
-        max-width: calc(100% - 200px);
-        left: 200px;
+        max-width: 100%;
+        left: 0;
     }
 }
 

@@ -27,9 +27,9 @@ export class AuthService {
     public signIn(user: User) {
         const data = { email: user.email, password: user.password }
         return this.http.post<any>('http://localhost:3000/', data)
-            .pipe(map(user => {
-                localStorage.setItem('token', JSON.stringify(user.token));
-                localStorage.setItem('userName', JSON.stringify(user.user.name))
+            .pipe(map(data => {
+                localStorage.setItem('token', JSON.stringify(data.token));
+                this.userName = data.user.name;
                 this.isAuth = true;
             }));
     }
@@ -47,13 +47,12 @@ export class AuthService {
     }
 
     public getUserName() {
-        this._userName = localStorage.getItem('userName').replace(/^"(.+(?="$))"$/, '$1');
+        this._userName = this.userName;
     }
 
     public logout() {
         this.isAuth = false;
         localStorage.removeItem('token');
-        localStorage.removeItem('userName');
         this.router.navigate(['/']);
     }
 }

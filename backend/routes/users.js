@@ -15,7 +15,7 @@ router.get('/', async function(req, res) {
     // AND name ILIKE '%${params}%'`, { type: sequelize.QueryTypes.SELECT });
     
     if (users.length > 0) {
-        res.status(200).json({data: users })
+        res.status(200).json({users: users})
     } else {
         res.status(404).json({message: 'Users not found!'});
     }

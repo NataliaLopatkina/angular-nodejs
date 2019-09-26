@@ -36,15 +36,15 @@ export class SignInComponent implements OnInit {
 
     submit() {
         return this.authService.signIn(this.profileForm.value)
-            .subscribe(
-                (response) => {
-                    this.router.navigateByUrl('/home');
-                },
+        .subscribe(
+            (response) => {
+                this.router.navigateByUrl('/home');
+            },
 
-                (error) => {
-                    const text = 'Incorrect email or password!';
-                    this.notificationService.toggleNotification(text);
-                }
-            )
+            (error) => {
+                const text = 'Incorrect email or password!';
+                this.notificationService.toggleNotification(text);
+            }
+        )
     }
 }
