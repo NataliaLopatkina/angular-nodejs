@@ -25,6 +25,10 @@ module.exports = (sequilize, type) => {
         authorId: {
             type: type.INTEGER,
             allowNull: false,
+            references: {
+                model: 'User',
+                key: 'userId',
+            }
         }
     })
 }

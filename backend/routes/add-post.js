@@ -5,10 +5,9 @@ const { Post } = require('../sequelize');
 router.post('/', async function (req, res) {
     const { title, text } = req.body;
     const authorId = req.user.id;
-    const userId = authorId;
     const date = new Date();
 
-    await Post.create({ title, text, date, authorId, userId });
+    await Post.create({ title, text, date, authorId });
     return res.status(201).json({message: 'Post added!'});
 });
 

@@ -25,6 +25,7 @@ export class FriendsPostsComponent implements OnInit {
         return this.postService.getPost(this.type).subscribe(
             (response) => {
                 this.posts = response['posts'];
+                console.log(response)
 
                 if (this.posts.length > 1) {
                     this.sortButton = true;
