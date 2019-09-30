@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Post } = require('../sequelize');
+const {Post} = require('../models');
 
 router.post('/', async function (req, res) {
     const { title, text } = req.body;

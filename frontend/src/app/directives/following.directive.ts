@@ -1,11 +1,11 @@
-import { Directive, HostListener, Input, HostBinding } from '@angular/core';
+import { Directive, HostListener, Input, HostBinding, OnInit } from '@angular/core';
 
 @Directive({
     selector: '[following]'
 })
 
-export class FollowingDirective{
-    @Input('following') class;
+export class FollowingDirective implements OnInit {
+    @Input() following;
 
     constructor () {}
 
@@ -13,5 +13,9 @@ export class FollowingDirective{
     
     @HostListener('click') click() {
         this.isActive = !this.isActive;
+    }
+
+    ngOnInit() {
+        this.isActive = this.following > 0;
     }
 }

@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { Post } = require('../sequelize');
+const { Post } = require('../models');
+const { User } = require('../models');
+const { Follower } = require('../models');
 const Sequelize = require('sequelize');
 
 router.get('/', async function (req, res) {
@@ -9,34 +11,38 @@ router.get('/', async function (req, res) {
     const Op = Sequelize.Op;
 
     if (type == 'MyPosts') {
-        const posts = await Post.findAll({where: {authorId: userId}});
+        const posts = await Post.findAll({ where: { authorId: userId } });
 
         if (posts.length > 0) {
-            return res.status(200).json({posts: posts, message: 'Posts found!'});
+            return res.status(200).json({ posts: posts, message: 'Posts found!' });
 
         } else {
             return res.status(404).json({ message: 'Posts not found!' });
         }
-        
+
     } else if (type == 'FriendsPosts') {
-        const posts = await Post.findAll({ where: { authorId: { [Op.ne]: userId }}})
+
+        const user = await User.findOne({
+            where: { id: userId },
+            include: [{
+                model: Follower,
+                as: 'followers',
+            }]
+        })
+
+        const ids = user.followers.map(follower => follower.following);
+
+        const posts = await Post.findAll({
+            where: { authorId: { [Op.in]: ids } }
+        })
 
         if (posts.length > 0) {
-            return res.status(200).json({posts: posts, message: 'Posts found!'});
+            return res.status(200).json({ posts: posts, message: 'Posts found!' });
 
         } else {
             return res.status(404).json({ message: 'Posts not found!' });
         }
     }
-
-
-    // } else {
-    //     const [posts] = await sequelize.query(`SELECT * FROM posts right join users on posts.author_id = users.id 
-    //     where users.id in (SELECT following from followers where follower = '${id}') 
-    //     and posts.author_id is not null`)
-    // }
-
-    
 });
 
 module.exports = router;

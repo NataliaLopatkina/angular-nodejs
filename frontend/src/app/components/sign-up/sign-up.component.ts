@@ -27,10 +27,10 @@ export class SignUpComponent implements OnInit {
 
     ngOnInit() {
         this.profileForm = this.fb.group({
-            name: ['', Validators.required],
-            email: ['', [Validators.required, Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]],
-            password: ['', [Validators.required, Validators.minLength(5)]],
-            confirmPassword: ['', [Validators.required, Validators.minLength(5)]]
+            name: ['Natalia', Validators.required],
+            email: ['nata.salimowa2015@yandex.ru', [Validators.required, Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]],
+            password: ['tosovu96', [Validators.required, Validators.minLength(5)]],
+            confirmPassword: ['tosovu96', [Validators.required, Validators.minLength(5)]]
         }, {
             validator: MustMatch('password', 'confirmPassword')
         })

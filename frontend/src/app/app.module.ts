@@ -26,8 +26,6 @@ import { AuthService } from './services/auth.service';
 import { ToggleMenuService } from './services/toggle-menu.service';
 import { NotificationService } from './services/notification.service';
 
-import { AuthModule } from './modules/auth/auth.module';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,8 +47,7 @@ import { AuthModule } from './modules/auth/auth.module';
     AppRouterModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    AuthModule
+    HttpClientModule
   ],
   providers: [
     AuthGuard,

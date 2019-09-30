@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const UserModel = require('./models/user');
+const UserModel = require('./models/user_old');
 const PostModel = require('./models/post');
 const FollowerModel = require('./models/follower');
 
@@ -26,4 +26,5 @@ module.exports = {
   User,
   Post,
   Follower,
+  sequelize
 };

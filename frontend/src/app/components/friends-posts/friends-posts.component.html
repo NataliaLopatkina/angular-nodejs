@@ -11,7 +11,7 @@
                     <div class="post posts-list__item" *ngFor="let post of posts">
                         <p class="post__title">{{post.title}}</p>
                         <p class="post__text">{{post.text}}</p>
-                        <p class="post__date">{{post.date}}</p>
+                        <p class="post__date">{{post.date |date: "dd-MM-yyyy"}}</p>
                     </div>
                 </div>
             </div>

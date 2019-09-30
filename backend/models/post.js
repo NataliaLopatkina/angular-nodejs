@@ -1,34 +1,18 @@
-module.exports = (sequilize, type) => {
-    return sequilize.define('post', {
-        id: {
-            type: type.INTEGER,
-            primaryKey: true,
-            autoIncrement: true,
-            allowNull: false,
-        },
-
-        title: {
-            type: type.STRING,
-            allowNull: false,
-        },
-
-        text: {
-            type: type.STRING(1234),
-            allowNull: false,
-        },
-
-        date: {
-            type: type.DATE,
-            allowNull: false,
-        },
-
-        authorId: {
-            type: type.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'User',
-                key: 'userId',
-            }
-        }
-    })
-}
+'use strict';
+module.exports = (sequelize, DataTypes) => {
+  const Post = sequelize.define('Post', {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    title: DataTypes.STRING,
+    text: DataTypes.STRING,
+    authorId: DataTypes.STRING,
+    date: DataTypes.DATE
+  }, {});
+  Post.associate = function(models) {
+    Post.belongsTo(models.User, {foreignKey: 'authorId', as: 'user'})
+  };
+  return Post;
+};

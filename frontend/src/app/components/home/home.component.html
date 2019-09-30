@@ -17,7 +17,7 @@
             <div class="users">
                 <div class="user users__item" *ngFor="let user of users">
                     <p class="user__name">{{user.name}}</p>
-                    <button class="user__following" [following] (click)="handlerFollowing(user.id)"></button>
+                    <button class="user__following" [following]="user.followings.length" (click)="handlerFollowing(user.id)"></button>
                 </div>
             </div>
         </div>

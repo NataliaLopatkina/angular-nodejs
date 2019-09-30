@@ -86,10 +86,10 @@ export class HomeComponent implements OnInit {
         this.typeSort = this.typeSort === 'ascend' ? 'descend' : 'ascend';
 
         if (this.typeSort === 'ascend') {
-            this.sortUsersList = this.users.sort(this.compareFunction)
+            this.users.sort(this.compareFunction)
 
         } else if (this.typeSort === 'descend') {
-            this.sortUsersList = this.users.sort(this.compareFunction).reverse();
+            this.users.sort(this.compareFunction).reverse();
         }
     }
 }

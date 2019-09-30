@@ -1,13 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const { User } = require('../sequelize');
+const {User} = require('../models');
 const jwt = require('jsonwebtoken');
 
 router.post('/', async function (req, res) {
     const { email, password } = req.body;
     const user = await User.findOne({where: {email: email, password: password }});
-
-    console.log(user)
 
     if (!user) {
         return res.status(402).json({message: 'Incorected email or password!'});

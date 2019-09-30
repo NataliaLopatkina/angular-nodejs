@@ -13,7 +13,6 @@ import { PostService } from '../../services/post.service';
 
 export class AddPostComponent implements OnInit {
     postForm: FormGroup;
-    id: number = 10;
 
     constructor(
         private fb: FormBuilder,
@@ -30,7 +29,7 @@ export class AddPostComponent implements OnInit {
     submit() {
         return this.postService.addPost(this.postForm.value).subscribe(
             (response) => {
-                this.router.navigate(['/my-posts'])
+                //this.router.navigate(['/my-posts'])
             },
 
             (error) => {
