@@ -1,16 +1,18 @@
 # Blog
-Blog
 
-## Requirements
-- node v6.7.0
-- npm v3.10.3
+## Installation
+git clone `https://github.com/NataliaLopatkina/angular-nodejs.git`
 
 ## Setting
-Installing the necessary modules:
-```
-npm i
-```
-## start
-this will start local server on address http://localhost:3000/
+Installing the necessary modules: `npm i `
 
-Enjoy your coding!
+## Start
+For starting use command `npm start`
+
+## Main stack
+- node.js
+- express
+- sequelize
+- jsonwebtoken
+
+For database is used PostgreSQL.

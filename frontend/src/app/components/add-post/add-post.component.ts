@@ -7,8 +7,7 @@ import { PostService } from '../../services/post.service';
 @Component({
     selector: 'app-add-post',
     templateUrl: './add-post.component.html',
-    styleUrls: ['./add-post.component.scss'],
-    providers: [PostService]
+    styleUrls: ['./add-post.component.scss']
 })
 
 export class AddPostComponent implements OnInit {
@@ -29,7 +28,7 @@ export class AddPostComponent implements OnInit {
     submit() {
         return this.postService.addPost(this.postForm.value).subscribe(
             (response) => {
-                //this.router.navigate(['/my-posts'])
+                this.router.navigate(['/my-posts'])
             },
 
             (error) => {

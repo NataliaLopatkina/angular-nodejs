@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { MenuService } from '../../services/menu.service';
 
 @Component({
     selector: 'app-404',
@@ -6,4 +8,10 @@ import { Component } from '@angular/core';
     styleUrls: ['./404.component.scss'],
 })
 
-export class NotFoundComponent {}
+export class NotFoundComponent implements OnInit{ 
+    constructor(private menuService: MenuService){}
+
+    ngOnInit() {
+        this.menuService.removeMenu();
+    }
+}

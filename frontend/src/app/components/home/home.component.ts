@@ -5,12 +5,12 @@ import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
 import { FollowingService } from '../../services/following.service';
 import { NotificationService } from '../../services/notification.service';
+import { MenuService } from '../../services/menu.service';
 
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
-    styleUrls: ['./home.component.scss'],
-    providers: [UserService, FollowingService]
+    styleUrls: ['./home.component.scss']
 })
 
 export class HomeComponent implements OnInit {
@@ -25,12 +25,16 @@ export class HomeComponent implements OnInit {
         private fb: FormBuilder,
         private userService: UserService,
         private followingService: FollowingService,
-        private notificationService: NotificationService) { }
+        private notificationService: NotificationService,
+        private menuService: MenuService,
+        ) { }
 
     ngOnInit() {
         this.searchForm = this.fb.group({
             search: ['']
         })
+
+        this.menuService.addMenu();
     }
 
     searchUser() {

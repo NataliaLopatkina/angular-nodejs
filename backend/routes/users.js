@@ -1,10 +1,8 @@
 var express = require('express');
 var router = express.Router();
 const Sequelize = require('sequelize');
-
-const models = require('../models');
-const User = models.User;
-const Follower = models.Follower;
+const { User } = require('../models');
+const { Follower } = require('../models');
 
 router.get('/', async function (req, res) {
     const id = req.user.id;

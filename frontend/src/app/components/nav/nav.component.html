@@ -1,4 +1,4 @@
-<nav class="nav" [class.is-open]="toggleMenuService.isOpened">
+<nav class="nav" [class.is-open]="toggleMenuService.isOpened" *ngIf="menuService.menu">
     <ul class="nav__list">
         <li class="nav__item">
             <a class="nav__link" [routerLink]="['/home']" routerLinkActive="nav__link--active">Нome</a>

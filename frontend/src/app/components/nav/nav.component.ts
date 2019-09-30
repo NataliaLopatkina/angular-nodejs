@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from '../../services/auth.service';
 import { ToggleMenuService } from '../../services/toggle-menu.service';
+import { MenuService } from '../../services/menu.service';
 
 @Component({
     selector: 'app-nav',
@@ -13,7 +14,8 @@ export class NavComponent implements OnInit {
 
     constructor(
         private authService: AuthService,
-        private toggleMenuService: ToggleMenuService) { }
+        private toggleMenuService: ToggleMenuService,
+        private menuService: MenuService) { }
 
     ngOnInit() {
     }

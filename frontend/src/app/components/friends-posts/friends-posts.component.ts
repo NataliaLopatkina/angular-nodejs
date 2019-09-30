@@ -7,9 +7,9 @@ import { NotificationService } from '../../services/notification.service';
 @Component({
     selector: 'app-friends-posts',
     templateUrl: './friends-posts.component.html',
-    styleUrls: ['./friends-posts.component.scss'],
-    providers: [PostService]
+    styleUrls: ['./friends-posts.component.scss']
 })
+
 export class FriendsPostsComponent implements OnInit {
     type: string = 'FriendsPosts';
     posts: Post[] = [];
@@ -25,7 +25,6 @@ export class FriendsPostsComponent implements OnInit {
         return this.postService.getPost(this.type).subscribe(
             (response) => {
                 this.posts = response['posts'];
-                console.log(response)
 
                 if (this.posts.length > 1) {
                     this.sortButton = true;

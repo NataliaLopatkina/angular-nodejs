@@ -20,11 +20,14 @@ import { NotificationComponent } from './components/notification/notification.co
 import { AuthGuard } from './guards/auth.guard';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { FollowingDirective } from './directives/following.directive';
-import { TogglePasswordDirective } from './directives/toggle-password.directive';
 
 import { AuthService } from './services/auth.service';
-import { ToggleMenuService } from './services/toggle-menu.service';
+import { FollowingService } from './services/following.service';
+import { MenuService } from './services/menu.service';
 import { NotificationService } from './services/notification.service';
+import { PostService } from './services/post.service';
+import { ToggleMenuService } from './services/toggle-menu.service';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,6 @@ import { NotificationService } from './services/notification.service';
     NotFoundComponent,
     NotificationComponent,
     FollowingDirective,
-    TogglePasswordDirective
   ],
   imports: [
     BrowserModule,
@@ -52,10 +54,14 @@ import { NotificationService } from './services/notification.service';
   providers: [
     AuthGuard,
     AuthService,
-    ToggleMenuService,
+    FollowingService,
+    MenuService,
     NotificationService,
+    PostService,
+    ToggleMenuService,
+    UserService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
-],
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
