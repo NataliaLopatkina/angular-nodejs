@@ -8,7 +8,7 @@ export class PostService {
     constructor(private http: HttpClient) {}
 
     public addPost(post: Post) {
-        const data = { text: post.text, title: post.title, data: post.data, author: post.author_id }
+        const data = { text: post.text, title: post.title, data: post.data, author: post.authorId }
         return this.http.post('http://localhost:3000/add-post', data)
     }
 
