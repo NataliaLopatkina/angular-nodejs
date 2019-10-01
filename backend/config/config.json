@@ -2,7 +2,7 @@
   "development": {
     "username": "postgres",
     "password": "tosovu96",
-    "database": "blog",
+    "database": "social",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "operatorsAliases": false

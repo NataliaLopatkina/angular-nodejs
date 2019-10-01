@@ -1,14 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { Post } = require('../models');
+const addPostController = require('../controllers/add-post.controller');
 
-router.post('/', async function (req, res) {
-    const { title, text } = req.body;
-    const authorId = req.user.id;
-    const date = new Date();
-
-    await Post.create({ title, text, date, authorId });
-    return res.status(201).json({message: 'Post added!'});
-});
+router.post('/', addPostController.createPost)
 
 module.exports = router;

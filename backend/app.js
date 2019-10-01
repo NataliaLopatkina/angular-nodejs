@@ -19,4 +19,8 @@ app.use('/add-post', verifyToken, addPostRouter);
 app.use('/following', verifyToken, followingRouter);
 app.use('/posts', verifyToken, postsRouter);
 
+app.use(function(err, req, res, next) {
+    res.status(500).send('Something went wrong!');
+})
+
 module.exports = app;
