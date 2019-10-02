@@ -12,6 +12,6 @@ exports.createPost = async function(req, res, next) {
     }
 
     catch (e) {
-        return res.json({ message: 'Post not added!' })
+        return res.status(400).json({ message: 'Post not added!' })
     }
 }

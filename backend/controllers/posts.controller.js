@@ -29,7 +29,7 @@ exports.getPosts = async function(req, res, next) {
         try {
             const user = await userService.getUserFollowers(queryUserFollowers);
             const ids = user.followers.map(follower => follower.following)
-            const queryFriendsPosts = { authorId: { [Op.in]: ids } };
+            const queryFriendsPosts = { where: { authorId: { [Op.in]: ids }} };
             const posts = await postService.getPosts(queryFriendsPosts);
 
             if(posts.length > 0) {

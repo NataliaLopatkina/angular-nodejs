@@ -21,6 +21,6 @@ exports.getFollowers = async function(req, res, next) {
     }
 
     catch (e) {
-        return res.status(400);
+        return res.status(400).json({message: 'Update followers error!'});
     }
 }
